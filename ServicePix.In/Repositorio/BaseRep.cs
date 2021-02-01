@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ServicePix.In.Model;
+using ServicePix.In.Repositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,24 +8,6 @@ using System.Linq.Expressions;
 
 namespace ServicePix.Repositorio
 {
-    /// <summary>
-    /// Tem metodos genericos aqui kkkkkk salva essa merda so passando o tipo   - Daora :)
-    /// </summary>
-    /// <typeparam name="T">Tipo da class </typeparam>
-    public interface IBase<T> where T : class
-    {
-        IList<T> GetAll(params Expression<Func<T, object>>[] navigationProperties);
-        IList<T> GetList(Func<T, bool> where, params Expression<Func<T, object>>[] navigationProperties);
-        T GetSingle(Func<T, bool> where, params Expression<Func<T, object>>[] navigationProperties);
-        Object Add(params T[] items);
-        void Update(params T[] items);
-        void Remove(params T[] items);
-    }
-
-    /// <summary>
-    /// Tem metodos genericos aqui kkkkkk salva essa merda so passando o tipo 
-    /// </summary>
-    /// <typeparam name="T">Tipo da class</typeparam>
     public class Base<T> : IBase<T> where T : class
     {
         public virtual IList<T> GetAll(params Expression<Func<T, object>>[] navigationProperties)
