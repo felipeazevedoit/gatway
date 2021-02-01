@@ -1,14 +1,35 @@
 version: '3.4'
 
 services:
-  database:
-    image: "postgres"
-    env_file:
-      - database.env
-    volumes:
-      - database-data:/var/lib/postgresql/data/
+  teste-postgres-compose:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "Postgres2019!"
+    ports:
+      - "15432:5432"
+    networks:
+      - service-pix-netowork
+
   servicepix.in:
     image: ${DOCKER_REGISTRY-}servicepixin
     build:
       context: .
       dockerfile: Dockerfile
+    networks:
+      - service-pix-netowork
+
+  teste-pgadmin-compose:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "renatogroff@yahoo.com.br"
+      PGADMIN_DEFAULT_PASSWORD: "PgAdmin2019!"
+    ports:
+      - "16543:80"
+    depends_on:
+      - teste-postgres-compose
+    networks:
+      - service-pix-netowork
+
+networks: 
+  service-pix-netowork:
+    driver: bridge
