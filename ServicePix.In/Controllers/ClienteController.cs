@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServicePix.In.Model;
+using ServicePix.In.Repositorio;
 using ServicePix.Repositorio;
 
 namespace ServicePix.In.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]/[action]")]
+    [Authorize]
     public class ClienteController : ControllerBase
     {
-        IBase<Cliente> rep;
+        IBase<Cliente> rep = new Base<Cliente>();
 
         [HttpGet]
         public IEnumerable<Cliente> GetAll()

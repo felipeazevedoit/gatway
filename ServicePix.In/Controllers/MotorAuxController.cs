@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using ServicePix.In.Model;
 using ServicePix.Repositorio;
 using ServicePix.In.Repositorio.Interfaces;
+using ServicePix.In.Repositorio;
 
 namespace ServicePix.In.Controllers
 {

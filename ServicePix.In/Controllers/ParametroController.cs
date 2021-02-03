@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using ServicePix.In.Model;
+using ServicePix.In.Repositorio;
 using ServicePix.Repositorio;
 
 namespace ServicePix.In.Controllers
