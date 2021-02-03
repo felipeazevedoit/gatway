@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServicePix.In.Model;
 using ServicePix.In.Repositorio;
@@ -14,7 +15,7 @@ namespace ServicePix.In.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]/[action]")]
-
+    [Authorize]
     public class AcaoController : ControllerBase
     {
         IBase<Acao> rep;

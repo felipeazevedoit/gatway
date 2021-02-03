@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServicePix.In.Model;
 using ServicePix.In.Repositorio;
@@ -9,6 +10,7 @@ namespace ServicePix.In.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ParametroController : ControllerBase
     {
         IBase<Parametro> rep;

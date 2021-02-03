@@ -5,15 +5,17 @@ using ServicePix.In.Model;
 using ServicePix.Repositorio;
 using ServicePix.In.Repositorio.Interfaces;
 using ServicePix.In.Repositorio;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ServicePix.In.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]/[action]")]
+    [Authorize]
     public class MotorAuxController : Controller
     {
-        IBase<MotorAuxiliar> rep;
-        IMotorAuxiliar motorRep;
+        IBase<MotorAuxiliar> rep = new Base<MotorAuxiliar>();
+        IMotorAuxiliar motorRep = new MotorAuxRep();
 
         [HttpGet]
         public IEnumerable<MotorAuxiliar> GetAll()

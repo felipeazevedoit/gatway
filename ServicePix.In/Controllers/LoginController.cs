@@ -15,6 +15,7 @@ namespace ServicePix.In.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class LoginController : ControllerBase
     {
         IBase<User> rep = new Base<User>();
