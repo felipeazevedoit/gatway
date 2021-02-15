@@ -30,7 +30,8 @@ namespace ServicePix.In
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {services.AddCors();
+        {
+            services.AddCors();
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
             services.AddAuthentication(x =>
             {
@@ -54,6 +55,7 @@ namespace ServicePix.In
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSwaggerGen(options =>
             {
+                options.EnableAnnotations();
                 options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Title = "In Service API",
@@ -72,7 +74,7 @@ namespace ServicePix.In
             }
 
             app.UseRouting();
-            
+
             app.UseCors(x => x
               .AllowAnyOrigin()
               .AllowAnyMethod()

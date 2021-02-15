@@ -7,7 +7,8 @@ namespace ServicePix.In.Model
 {
     public class Parametro : Base
     {
-        public string Caminho { get; set; }
+        public int Ordem { get; set; }
+        public string Tipo { get; set; }
     }
 }
  

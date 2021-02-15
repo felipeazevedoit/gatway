@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using ServicePix.In.Model;
 using ServicePix.In.Repositorio;
 using ServicePix.Repositorio;
+using Swashbuckle.AspNetCore.Annotations;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -21,7 +22,8 @@ namespace ServicePix.In.Controllers
         IBase<Acao> rep;
 
         [HttpGet]
-        public IEnumerable<Acao> GetAll()
+        [SwaggerOperation(Summary ="RetornarTodos")]
+        public IEnumerable<Acao> RetornarTodos()
         {
             return rep.GetAll().Where(x => x.Ativo == true).ToList();
         }
@@ -35,6 +37,7 @@ namespace ServicePix.In.Controllers
 
         // POST api/<AcaoController>
         [HttpPost]
+        [SwaggerOperation(Summary = "RetornarTodos",Description = "Acao")]
         public void Post([FromBody] Acao value)
         {
             if (value.ID == 0)

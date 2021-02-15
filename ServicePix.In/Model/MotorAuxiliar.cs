@@ -7,7 +7,7 @@ namespace ServicePix.In.Model
 {
     public class MotorAuxiliar : Base
     {
-        public Acao acao { get; set; }
+        public List<Acao> acao { get; set; }
         public string Url { get; set; }
     }
 }
