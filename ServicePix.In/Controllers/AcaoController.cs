@@ -19,7 +19,7 @@ namespace ServicePix.In.Controllers
     [Authorize]
     public class AcaoController : ControllerBase
     {
-        IBase<Acao> rep;
+        IBase<Acao> rep = new Base<Acao>();
 
         [HttpGet]
         [SwaggerOperation(Summary ="RetornarTodos")]

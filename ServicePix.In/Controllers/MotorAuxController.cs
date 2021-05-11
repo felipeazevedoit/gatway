@@ -141,7 +141,7 @@ namespace ServicePix.In.Controllers
                     Status = 1,
                     UsuarioCriacao = User.Id,
                     UsuarioEdicao = User.Id,
-                    tipoAcao = 3
+                    idTipoAcao = 3
                 };
                 lsacao.Add(obj);
             }

@@ -26,7 +26,7 @@ namespace ServicePix.In.Controllers
         [Route("login")]
         [AllowAnonymous]
         public async Task<ActionResult<dynamic>> Authenticate([FromBody]User model)
-        {
+         {
             // Recupera o usuário
             var user = UserRep.GetUserLogin(model.Username, model.Password);
 

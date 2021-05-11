@@ -61,12 +61,7 @@ namespace ServicePix.In.Migrations
                     b.Property<int>("idTipoAcao")
                         .HasColumnType("int");
 
-                    b.Property<int?>("parametroID")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
-
-                    b.HasIndex("parametroID");
 
                     b.ToTable("Acao");
                 });
@@ -160,15 +155,10 @@ namespace ServicePix.In.Migrations
                     b.Property<int>("UsuarioEdicao")
                         .HasColumnType("int");
 
-                    b.Property<int?>("acaoID")
-                        .HasColumnType("int");
-
                     b.Property<int>("idCliente")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("acaoID");
 
                     b.ToTable("MotorAuxiliar");
                 });
@@ -180,11 +170,11 @@ namespace ServicePix.In.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AcaoID")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
-
-                    b.Property<string>("Caminho")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
@@ -200,8 +190,14 @@ namespace ServicePix.In.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<int>("Ordem")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<string>("Tipo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UsuarioCriacao")
                         .HasColumnType("int");
@@ -213,6 +209,8 @@ namespace ServicePix.In.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("AcaoID");
 
                     b.ToTable("Parametro");
                 });
@@ -238,18 +236,11 @@ namespace ServicePix.In.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("ServicePix.In.Model.Acao", b =>
+            modelBuilder.Entity("ServicePix.In.Model.Parametro", b =>
                 {
-                    b.HasOne("ServicePix.In.Model.Parametro", "parametro")
-                        .WithMany()
-                        .HasForeignKey("parametroID");
-                });
-
-            modelBuilder.Entity("ServicePix.In.Model.MotorAuxiliar", b =>
-                {
-                    b.HasOne("ServicePix.In.Model.Acao", "acao")
-                        .WithMany()
-                        .HasForeignKey("acaoID");
+                    b.HasOne("ServicePix.In.Model.Acao", null)
+                        .WithMany("parametro")
+                        .HasForeignKey("AcaoID");
                 });
 #pragma warning restore 612, 618
         }
