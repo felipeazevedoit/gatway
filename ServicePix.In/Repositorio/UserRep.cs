@@ -10,11 +10,17 @@ namespace ServicePix.In.Repositorio.Interfaces
     {
         public User GetUserLogin(string user, string password)
         {
-            using (var context = new spContext())
+            try
             {
-                var retornoUser = context.User.Where(x => x.Username == user && x.Password == password).FirstOrDefault();
-                return retornoUser;
+                using (var context = new spContext())
+                {
+                    var retornoUser = context.User.Where(x => x.Username == user && x.Password == password).FirstOrDefault();
+                    return retornoUser;
 
+                }
+            }catch(Exception e )
+            {
+                return null;
             }
         }
     }
