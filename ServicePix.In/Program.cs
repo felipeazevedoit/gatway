@@ -21,6 +21,7 @@ namespace ServicePix.In
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    //.UseUrls("http://25.0.38.95:5012");
                 });
     }
 }

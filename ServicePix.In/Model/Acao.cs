@@ -7,7 +7,7 @@ namespace ServicePix.In.Model
 {
     public class Acao : Base
     {
-        public int tipoAcao { get; set; }
+        public int idTipoAcao { get; set; }
         public string Caminho { get; set; }
         public List<Parametro> parametro { get; set; }
     }

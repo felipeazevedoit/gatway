@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -34,10 +35,14 @@ namespace ServicePix.In.Controllers
         {
             if (value.ID == 0)
             {
+                value.DataCriacao = DateTime.Now;
+                value.DateAlteracao = DateTime.Now;
+                
                 rep.Add(value);
             }
             else
             {
+                value.DateAlteracao = DateTime.Now;
                 rep.Update(value);
             }
         }
