@@ -1,0 +1,799 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "In Service API",
+    "description": "Esta api é uma das principais do sistema, nela é controlada os clientes e as rotas",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Acao/RetornarTodos": {
+      "get": {
+        "tags": [
+          "Acao"
+        ],
+        "summary": "RetornarTodos",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Acao"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Acao/Get/{id}": {
+      "get": {
+        "tags": [
+          "Acao"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Acao"
+            }
+          }
+        }
+      }
+    },
+    "/api/Acao/Post": {
+      "post": {
+        "tags": [
+          "Acao"
+        ],
+        "summary": "RetornarTodos",
+        "description": "Acao",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Acao"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Acao/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Acao"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Cliente/GetAll": {
+      "get": {
+        "tags": [
+          "Cliente"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Cliente"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cliente/Get/{id}": {
+      "get": {
+        "tags": [
+          "Cliente"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Cliente"
+            }
+          }
+        }
+      }
+    },
+    "/api/Cliente/Post": {
+      "post": {
+        "tags": [
+          "Cliente"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Cliente"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Cliente/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Cliente"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Login/Authenticate/login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Login/Anonymous/anonymous": {
+      "get": {
+        "tags": [
+          "Login"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/Login/Authenticated/authenticated": {
+      "get": {
+        "tags": [
+          "Login"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/Login/Employee/employee": {
+      "get": {
+        "tags": [
+          "Login"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/Login/Manager/manager": {
+      "get": {
+        "tags": [
+          "Login"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/MotorAux/GetAll": {
+      "get": {
+        "tags": [
+          "MotorAux"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MotorAuxiliar"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/MotorAux/Get/{id}": {
+      "get": {
+        "tags": [
+          "MotorAux"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/MotorAuxiliar"
+            }
+          }
+        }
+      }
+    },
+    "/api/MotorAux/Post": {
+      "post": {
+        "tags": [
+          "MotorAux"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/MotorAuxiliar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/MotorAux/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "MotorAux"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/MotorAux/acessarmotor/{aux}": {
+      "get": {
+        "tags": [
+          "MotorAux"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "aux",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/MotorAuxiliar"
+            }
+          }
+        }
+      }
+    },
+    "/api/MotorAux/PostJsonSwagger": {
+      "post": {
+        "tags": [
+          "MotorAux"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Parametro": {
+      "get": {
+        "tags": [
+          "Parametro"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Parametro"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Parametro"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Parametro"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Parametro/{id}": {
+      "get": {
+        "tags": [
+          "Parametro"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Parametro"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Parametro"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Acao": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "nome": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "descricao": {
+          "maxLength": 150,
+          "minLength": 0,
+          "type": "string"
+        },
+        "dataCriacao": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dateAlteracao": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "usuarioCriacao": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "usuarioEdicao": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ativo": {
+          "type": "boolean"
+        },
+        "status": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "idCliente": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "idTipoAcao": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "caminho": {
+          "type": "string"
+        },
+        "parametro": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Parametro"
+          }
+        }
+      }
+    },
+    "Cliente": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "nome": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "descricao": {
+          "maxLength": 150,
+          "minLength": 0,
+          "type": "string"
+        },
+        "dataCriacao": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dateAlteracao": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "usuarioCriacao": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "usuarioEdicao": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ativo": {
+          "type": "boolean"
+        },
+        "status": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "idCliente": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "cnpj": {
+          "maxLength": 150,
+          "minLength": 0,
+          "type": "string"
+        },
+        "email": {
+          "maxLength": 150,
+          "minLength": 0,
+          "type": "string"
+        },
+        "url": {
+          "maxLength": 150,
+          "minLength": 0,
+          "type": "string"
+        }
+      }
+    },
+    "MotorAuxiliar": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "nome": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "descricao": {
+          "maxLength": 150,
+          "minLength": 0,
+          "type": "string"
+        },
+        "dataCriacao": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dateAlteracao": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "usuarioCriacao": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "usuarioEdicao": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ativo": {
+          "type": "boolean"
+        },
+        "status": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "idCliente": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "acao": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Acao"
+          }
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "Parametro": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "nome": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "descricao": {
+          "maxLength": 150,
+          "minLength": 0,
+          "type": "string"
+        },
+        "dataCriacao": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dateAlteracao": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "usuarioCriacao": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "usuarioEdicao": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ativo": {
+          "type": "boolean"
+        },
+        "status": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "idCliente": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ordem": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "tipo": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

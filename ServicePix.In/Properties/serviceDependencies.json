@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "apis1": {
+      "type": "apis"
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "InDb",
+      "suggestion": "true",
+      "ignored": "true"
+    }
+  }
+}
