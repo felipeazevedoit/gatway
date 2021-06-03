@@ -9,6 +9,7 @@ namespace ServicePix.In.Model
     {
         public int Ordem { get; set; }
         public string Tipo { get; set; }
+        public int AcaoID { get; set; }
     }
 }
  

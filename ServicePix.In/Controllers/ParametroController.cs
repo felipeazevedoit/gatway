@@ -8,12 +8,12 @@ using ServicePix.Repositorio;
 
 namespace ServicePix.In.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     [Authorize]
     public class ParametroController : ControllerBase
     {
-        IBase<Parametro> rep;
+        IBase<Parametro> rep = new Base<Parametro>();
 
         [HttpGet]
         public IEnumerable<Parametro> GetAll()
