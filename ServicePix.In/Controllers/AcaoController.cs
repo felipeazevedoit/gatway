@@ -20,7 +20,8 @@ namespace ServicePix.In.Controllers
     public class AcaoController : ControllerBase
     {
         IBase<Acao> rep = new Base<Acao>();
-
+        MotorAuxRep repMotor = new MotorAuxRep();
+        IBase<MotorAuxiliar> BaseMotor = new Base<MotorAuxiliar>();
         [HttpGet]
         [SwaggerOperation(Summary ="RetornarTodos")]
         public IEnumerable<Acao> RetornarTodos()
@@ -37,7 +38,7 @@ namespace ServicePix.In.Controllers
 
         // POST api/<AcaoController>
         [HttpPost]
-        [SwaggerOperation(Summary = "RetornarTodos",Description = "Acao")]
+        [SwaggerOperation(Summary = "SalverAcao",Description = "Acao")]
         public void Post([FromBody] Acao value)
         {
             if (value.ID == 0)
@@ -56,6 +57,27 @@ namespace ServicePix.In.Controllers
         {
             var acao = rep.GetSingle(x => x.ID == id);
             rep.Remove(acao);
+        }
+
+
+
+        [HttpPost("{idMotor}")]
+        [SwaggerOperation(Summary = "SalvarAcao", Description = "Acao")]
+        public void SalvarAcaoPorMotor([FromBody] Acao acao,int idMotor)
+        {
+            MotorAuxiliar motorAuxBase = BaseMotor.GetSingle(x => x.ID == idMotor);
+            MotorAuxiliar motor = repMotor.GetMotorAuxiliar(motorAuxBase.Nome);
+            acao.MotorAuxiliarID = idMotor;
+            if (acao.ID == 0)
+            {
+                rep.Add(acao);
+            }
+            else
+            {
+                rep.Update(acao);
+                motor.acao.Add(acao);
+                BaseMotor.Update(motor);
+            }
         }
     }
 }

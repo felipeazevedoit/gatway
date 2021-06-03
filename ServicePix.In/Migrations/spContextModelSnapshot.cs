@@ -42,6 +42,9 @@ namespace ServicePix.In.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
+                    b.Property<int>("MotorAuxiliarID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
@@ -62,6 +65,8 @@ namespace ServicePix.In.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("MotorAuxiliarID");
 
                     b.ToTable("Acao");
                 });
@@ -234,6 +239,15 @@ namespace ServicePix.In.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("ServicePix.In.Model.Acao", b =>
+                {
+                    b.HasOne("ServicePix.In.Model.MotorAuxiliar", null)
+                        .WithMany("acao")
+                        .HasForeignKey("MotorAuxiliarID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ServicePix.In.Model.Parametro", b =>

@@ -8,7 +8,6 @@ namespace ServicePix.In.Model
 {
     public class MotorAuxiliar : Base
     {
-        [NotMapped]
         public List<Acao> acao { get; set; }
         public string Url { get; set; }
     }
