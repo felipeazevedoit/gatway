@@ -20,7 +20,12 @@ namespace ServicePix.In.Controllers
         {
             return rep.GetAll().Where(x => x.Ativo == true).ToList();
         }
-
+        [HttpGet("{idacao}")]
+        public IEnumerable<Parametro> GetAllPorAcao(int idacao)
+        {
+            var teste = rep.GetAll().Where(x => x.Ativo == true && x.AcaoID == idacao).ToList();
+            return teste;
+        }
         // GET api/<AcaoController>/5
         [HttpGet("{id}")]
         public Parametro Get(int id)

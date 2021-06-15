@@ -28,6 +28,12 @@ namespace ServicePix.In.Controllers
         {
             return rep.GetAll().Where(x => x.Ativo == true).ToList();
         }
+        [HttpGet("{idaux}")]
+        [SwaggerOperation(Summary = "RetornarTodosPorMotor")]
+        public IEnumerable<Acao> RetornarTodosPorMotor(int idaux)
+        {
+            return rep.GetAll().Where(x => x.Ativo == true && x.MotorAuxiliarID == idaux).ToList();
+        }
 
         // GET api/<AcaoController>/5
         [HttpGet("{id}")]
